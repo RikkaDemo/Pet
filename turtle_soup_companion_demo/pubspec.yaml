@@ -1,0 +1,62 @@
+# pubspec.yaml
+# (V7.1 模块 5 修改: 修正并补全 assets/animations/ 路径)
+
+name: turtle_soup_companion_demo
+description: A desktop pet for the Turtle Soup game.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # --- 模块 1: 窗口管理 ---
+  window_manager: ^0.3.9     # V7.1 核心: 窗口控制
+  screen_retriever: ^0.1.9   # V7.1 核心: 获取屏幕尺寸
+
+  # --- 模块 3: 状态管理 ---
+  flutter_riverpod: ^2.5.1   # V7.1 核心: 全局状态管理
+  
+  # --- 模块 3: 设置持久化 ---
+  shared_preferences: ^2.2.3 # V7.1 核心: 存储设置
+
+  # --- 模块 4: 网络通信 ---
+  web_socket_channel: ^2.4.1 # V7.1 核心: WebSocket
+
+  # --- (未来) 模块 5: 音频与TTS ---
+  audioplayers: ^5.2.1       # 播放音效
+  flutter_tts: ^3.8.5        # 文本转语音
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+    
+  # (V7.1 推荐) 更新到最新的稳定版 Lints
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  # (V7.1 模块 5 修正)
+  # 根据 V7.1 方案 (4.0 / 最终代码目录结构) 的 assets/ 结构图,
+  # 补全所有动画路径
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/sounds/
+    # --- V7.1 动画路径 (完整) ---
+    - assets/animations/idle_emotion/   # V7.1 新增
+    - assets/animations/idle_action/    # V7.1 新增
+    - assets/animations/happy/
+    - assets/animations/walk/
+    - assets/animations/click/
+    - assets/animations/drag/
+    - assets/animations/push_boundary/
+    - assets/animations/feed/
+    - assets/animations/shock/
+    # (V7.1 备注: V7.1 的 "最终代码目录结构" 中未列出 offline 路径, 故移除)
+    # (如果 V7.1 仍需 Offline 动画, 请取消注释下一行)
+    # - assets/animations/offline/
