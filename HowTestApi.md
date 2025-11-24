@@ -1,0 +1,1 @@
+***After running WebServiceArchitectureApplication.java, locate the checkout-test.http test file in the resources directory and run all the functions.***
