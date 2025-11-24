@@ -1,0 +1,46 @@
+### A complete shopping process test
+
+### 1. Obtain the product list
+GET http://localhost:8080/api/products
+Accept: application/json
+
+### 2. Create a shopping basket
+POST http://localhost:8080/api/baskets/1234
+Accept: application/json
+
+### 3. Add the product to the shopping basket
+POST http://localhost:8080/api/baskets/1234/products/P001?quantity=1
+Accept: application/json
+
+POST http://localhost:8080/api/baskets/1234/products/P002?quantity=2
+Accept: application/json
+
+### 4. Apply the discount
+POST http://localhost:8080/api/baskets/1234/discount?discountCode=DISCOUNT10
+Accept: application/json
+
+### 5. Check out (using the request body)
+POST http://localhost:8080/api/orders/checkout/1234
+Content-Type: application/json
+Accept: application/json
+
+{
+  "creditCardNumber": "4111111111111111",
+  "expiryDate": "12/27"
+}
+
+
+
+### 6. Use the test card number in the document to complete the payment.(Notice:A customer can only use one card number for checkout. If you have already used the card number mentioned above, you will not be able to use a second card number for checkout.)
+POST http://localhost:8080/api/orders/checkout/1234
+Content-Type: application/json
+Accept: application/json
+
+{
+  "creditCardNumber": "4000056655665556",
+  "expiryDate": "01/30"
+}
+
+### 7. Obtain the list of orders
+GET http://localhost:8080/api/orders
+Accept: application/json
